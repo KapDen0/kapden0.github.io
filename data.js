@@ -10,6 +10,9 @@
    short     — краткое описание (под картинкой, на карточке)
    desc      — полное описание (в блоке "Подробнее")
    link      — ссылка на RuStore
+   apk       — имя .apk-файла для прямой загрузки с сайта
+               (лежит рядом с index.html). Пустая строка — если
+               прямой загрузки нет.
    proPrice  — цена Pro-версии в рублях (внутренняя покупка внутри
                приложения). null — если платной версии нет.
    status    — статус карточки. Возможные значения:
@@ -30,6 +33,7 @@ const APPS = [
         short: "Галочка — простой и удобный менеджер списков покупок, дел и проектов.",
         desc: "Единое место для покупок, дел и проектов. Никаких сложных настроек — только то, что действительно нужно.",
         link: "https://www.rustore.ru/catalog/app/com.kdenstudiomeasurement.checkmark",
+        apk: "CheckMark-app-release.apk",
         proPrice: 99,
         status: "active",
         features: [
@@ -51,6 +55,7 @@ const APPS = [
         short: "Библия в вашем телефоне: поиск, заметки и чтение офлайн.",
         desc: "Обычная Библия — приложение для чтения Синодального перевода Библии.",
         link: "https://www.rustore.ru/catalog/app/com.kdenstudiomeasurement.handybible",
+        apk: "HandyBible-app-release.apk",
         proPrice: null,
         status: "active",
         linkText: "Скачать бесплатно",
@@ -76,6 +81,7 @@ const APPS = [
         short: "Удобный редактор HTML, CSS и JavaScript с запуском проектов на телефоне.",
         desc: "Аккуратный инструмент для работы с кодом прямо на устройстве — для тех, кому важно писать, редактировать и тестировать проекты без лишних сложностей.",
         link: "https://www.rustore.ru/catalog/app/com.kdenstudiomeasurement.htmleditorruncraft",
+        apk: "HTMLEditorRunCraft-app-release.apk",
         proPrice: null,
         status: "new",
         features: [
@@ -97,6 +103,7 @@ const GAMES = [
         short: "Собери свою электрическую цепь! Лампы, транзисторы, моторы и датчики.",
         desc: "Схемотека — реалистичный симулятор электрических схем. Почувствуй себя инженером и собери свою цепь из десятков компонентов.",
         link: "https://www.rustore.ru/catalog/app/com.kdenstudiomeasurement.schemoteka",
+        apk: "Schemoteka-app-release.apk",
         proPrice: null,
         status: "active",
         features: [
@@ -114,6 +121,7 @@ const GAMES = [
         short: "Смотри видео, качай очки, собирай темы и бей рекорды.",
         desc: "AdsBoost — уютная игра, где ты качаешь свой профиль и соревнуешься с другими игроками.",
         link: "",
+        apk: "AdsBoost-app-release.apk",
         proPrice: null,
         status: "removed",
         features: [

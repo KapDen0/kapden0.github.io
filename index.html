@@ -357,6 +357,44 @@
             transition: transform 0.2s ease;
         }
 
+        /* Кнопки-действия на карточке */
+        .card-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 14px;
+        }
+
+        .card-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            padding: 12px 16px;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+        }
+
+        .card-btn.rustore {
+            background: rgba(0, 229, 255, 0.1);
+            color: #00e5ff;
+            border: 1px solid rgba(0, 229, 255, 0.3);
+        }
+        .card-btn.rustore:hover { background: rgba(0, 229, 255, 0.18); transform: translateY(-2px); }
+
+        .card-btn.direct {
+            background: linear-gradient(135deg, #00e5ff, #0088cc);
+            color: #0b0e13;
+            box-shadow: 0 4px 14px rgba(0, 229, 255, 0.25);
+        }
+        .card-btn.direct:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0, 229, 255, 0.4); }
+
         /* ===== Badges ===== */
         .badge {
             font-size: 0.75rem;
@@ -626,15 +664,24 @@
         function card(item) {
             const st = STATUS[item.status] || STATUS.active;
             const disabled = item.status === 'removed' || item.status === 'soon';
-            const href = disabled ? '#' : (item.link || '#');
-            let link = disabled ? '' : '<span class="app-link">' + (item.linkText || 'Скачать →') + '</span>';
+            const clickable = disabled ? '' : 'onclick="openByName(\'' + item.name + '\')"';
 
-            return '<div class="app-card status-' + item.status + '" data-name="' + item.name + '" ' + (disabled ? '' : 'onclick="openByName(\'' + item.name + '\')"') + '>' +
+            // Кнопки-действия
+            let actions = '';
+            if (item.link) {
+                actions += '<a class="card-btn rustore" href="' + item.link + '" target="_blank" rel="noopener" onclick="event.stopPropagation()">📲 Скачать в RuStore</a>';
+            }
+            if (item.apk) {
+                actions += '<a class="card-btn direct" href="' + item.apk + '" download onclick="event.stopPropagation()">⬇️ Скачать тут</a>';
+            }
+
+            return '<div class="app-card status-' + item.status + '" data-name="' + item.name + '" ' + clickable + '>' +
                 '<img src="' + item.icon + '" alt="' + item.name + '" class="app-icon-img">' +
                 '<div class="app-name">' + item.name + '</div>' +
                 '<div class="app-desc">' + item.short + '</div>' +
                 priceBlock(item) +
-                '<div class="app-footer">' + badge(st.text, st.className) + link + '</div>' +
+                '<div class="app-footer">' + badge(st.text, st.className) + '</div>' +
+                '<div class="card-actions">' + actions + '</div>' +
                 '</div>';
         }
 
@@ -679,17 +726,30 @@
                 modalPro.appendChild(box);
             }
 
-            // Кнопка скачивания
+            // Кнопки скачивания
             modalDownload.innerHTML = '';
+            const btns = document.createElement('div');
+            btns.style.display = 'flex';
+            btns.style.flexWrap = 'wrap';
+            btns.style.gap = '10px';
             if (item.link) {
                 const a = document.createElement('a');
                 a.className = 'download-btn';
                 a.href = item.link;
                 a.target = '_blank';
                 a.rel = 'noopener';
-                a.textContent = item.linkText || 'Скачать бесплатно на RuStore';
-                modalDownload.appendChild(a);
+                a.textContent = '📲 Скачать в RuStore';
+                btns.appendChild(a);
             }
+            if (item.apk) {
+                const a = document.createElement('a');
+                a.className = 'card-btn direct';
+                a.href = item.apk;
+                a.setAttribute('download', '');
+                a.textContent = '⬇️ Скачать тут';
+                btns.appendChild(a);
+            }
+            modalDownload.appendChild(btns);
             overlay.classList.add('open');
         }
 
