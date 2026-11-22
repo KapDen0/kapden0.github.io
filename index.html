@@ -409,6 +409,7 @@
         .badge-new { background: rgba(168, 85, 247, 0.15); color: #d8b4fe; border: 1px solid rgba(168, 85, 247, 0.4); }
         .badge-removed { background: rgba(244, 63, 94, 0.12); color: #fda4af; border: 1px solid rgba(244, 63, 94, 0.35); }
         .badge-soon { background: rgba(255,255,255,0.08); color: #8892a0; border: 1px solid rgba(255,255,255,0.15); }
+        .badge-queue { background: rgba(251, 191, 36, 0.12); color: #fcd34d; border: 1px solid rgba(251, 191, 36, 0.35); }
 
         /* ===== Modal ===== */
         .modal-overlay {
@@ -643,7 +644,8 @@
             active:  { className: 'badge-active',  text: 'Активно' },
             new:     { className: 'badge-new',     text: 'Новинка' },
             removed: { className: 'badge-removed', text: 'Снято с публикации' },
-            soon:    { className: 'badge-soon',    text: 'В разработке' }
+            soon:    { className: 'badge-soon',    text: 'В разработке' },
+            queue:   { className: 'badge-queue',   text: 'В очереди' }
         };
 
         function badge(html, style) {
