@@ -11,7 +11,7 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        html { scroll-behavior: smooth; }
+        html { scroll-behavior: smooth; scroll-padding-top: 90px; }
 
         body {
             font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
@@ -51,13 +51,13 @@
         /* ===== Sticky nav ===== */
         .nav {
             position: fixed;
-            top: 0;
+            top: 12px;
             left: 0;
             right: 0;
             z-index: 50;
             display: flex;
             justify-content: center;
-            padding: 18px 20px 0;
+            padding: 0 20px;
         }
 
         .nav-bar {
@@ -67,8 +67,8 @@
             gap: 16px;
             max-width: 1100px;
             width: 100%;
-            padding: 10px 18px;
-            border-radius: 18px;
+            padding: 8px 16px;
+            border-radius: 16px;
             background: rgba(16, 20, 27, 0.72);
             backdrop-filter: blur(16px);
             border: 1px solid rgba(255,255,255,0.08);
@@ -139,7 +139,7 @@
         /* ===== Hero ===== */
         header {
             text-align: center;
-            padding: 130px 20px 70px;
+            padding: 150px 20px 70px;
             animation: fadeInDown 0.9s ease;
         }
 
@@ -229,6 +229,7 @@
         /* ===== Sections ===== */
         .section {
             padding: 40px 20px 60px;
+            scroll-margin-top: 100px;
             animation: fadeInUp 0.6s ease;
         }
 
@@ -608,6 +609,31 @@
         }
         .donate-btn:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 12px 32px rgba(255, 183, 77, 0.4); }
 
+        .donate-actions { margin-bottom: 8px; }
+
+        .channels { margin-top: 28px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.08); }
+        .channels-label {
+            display: block;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #8892a0;
+            margin-bottom: 14px;
+            font-weight: 700;
+        }
+        .channel-links { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+        .channel-btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.12);
+            color: #cbd5e1;
+            font-weight: 600;
+            font-size: 0.98rem;
+            padding: 12px 22px; border-radius: 12px; text-decoration: none;
+            transition: all 0.25s ease;
+        }
+        .channel-btn:hover { color: #00e5ff; border-color: rgba(0,229,255,0.4); background: rgba(0,229,255,0.06); transform: translateY(-2px); }
+
         /* ===== Footer ===== */
         footer {
             text-align: center;
@@ -638,7 +664,7 @@
         @media (max-width: 650px) {
             h1 { font-size: 2.3rem; }
             .apps-grid { grid-template-columns: 1fr; }
-            header { padding: 60px 16px 50px; }
+            header { padding: 110px 16px 50px; }
             .modal { padding: 24px; }
             .nav a { font-size: 0.85rem; padding: 7px 10px; }
         }
@@ -692,9 +718,22 @@
         <section class="donate-section" id="support">
             <h2>☕ Поддержать разработчика</h2>
             <p>Ваша поддержка помогает выпускать обновления чаще, исправлять ошибки и создавать новые проекты. Спасибо!</p>
-            <a href="https://boosty.to/kapdenprog/donate" target="_blank" rel="noopener" class="donate-btn">
-                💰 Поддержать на Boosty
-            </a>
+            <div class="donate-actions">
+                <a href="https://boosty.to/kapdenprog/donate" target="_blank" rel="noopener" class="donate-btn">
+                    💰 Поддержать на Boosty
+                </a>
+            </div>
+            <div class="channels">
+                <span class="channels-label">Наши каналы</span>
+                <div class="channel-links">
+                    <a href="https://t.me/KDenNeonSTUDIO" target="_blank" rel="noopener" class="channel-btn">
+                        ✈️ Telegram — KDen Neon Studio
+                    </a>
+                    <a href="https://max.ru/join/JrHKMdP9vNmhwXBfbRi9gJmYXcL5v9RRXAJTdq6HJJw" target="_blank" rel="noopener" class="channel-btn">
+                        ➕ Max — канал студии
+                    </a>
+                </div>
+            </div>
         </section>
 
         <footer>
@@ -888,7 +927,7 @@
                 const box = document.createElement('div');
                 box.className = 'modal-pro';
                 box.innerHTML = '<span class="pro-price">Pro — ' + item.proPrice + ' ₽</span>' +
-                    '<span class="pro-note">Скачайте приложение бесплатно в RuStore — Pro-версия открывается внутри приложения как внутренняя покупка.</span>';
+                    '<span class="pro-note">Pro-версия оплачивается внутри приложения через сервис ЮKassa. Приложение скачивается бесплатно.</span>';
                 modalPro.appendChild(box);
             }
 
