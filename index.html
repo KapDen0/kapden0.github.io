@@ -283,7 +283,7 @@
         .video-card video {
             display: block;
             width: 100%;
-            aspect-ratio: 9 / 16;
+            aspect-ratio: 16 / 9;
             object-fit: cover;
             background: #000;
         }
@@ -890,15 +890,10 @@
             const items = APPS.filter(function (a) { return a.video; });
             container.innerHTML = items.map(function (a, i) {
                 return '<div class="video-card" style="animation-delay:' + (i * 0.08) + 's">' +
-                    '<video src="' + a.video + '" muted loop playsinline preload="metadata"></video>' +
+                    '<video src="' + a.video + '" autoplay muted loop playsinline preload="auto"></video>' +
                     '<div class="video-name">▶ ' + a.name + '</div>' +
                     '</div>';
             }).join('');
-            container.querySelectorAll('video').forEach(function (v) {
-                v.addEventListener('mouseenter', function () { v.play(); });
-                v.addEventListener('mouseleave', function () { v.pause(); });
-                v.addEventListener('touchstart', function () { if (v.paused) v.play(); else v.pause(); });
-            });
         }
         renderVideos();
 
