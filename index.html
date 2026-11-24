@@ -916,7 +916,9 @@
             modalBadge.className = 'badge ' + st.className;
             modalBadge.textContent = st.text;
             modalCat.textContent = item.category || '';
-            modalVer.textContent = item.version ? 'Версия ' + item.version : '';
+            let ver = item.version ? 'APK ' + item.version : '';
+            if (item.ruStoreVersion) ver += (ver ? ' · ' : '') + 'RuStore ' + item.ruStoreVersion;
+            modalVer.textContent = ver;
             modalDesc.textContent = item.desc;
             renderGallery(item);
             modalFeatures.innerHTML = (item.features || []).map(function (f) { return '<li>' + f + '</li>'; }).join('');
