@@ -255,6 +255,47 @@
             gap: 24px;
         }
 
+        /* ===== Видеоролики ===== */
+        .videos-subtitle {
+            color: #8892a0;
+            font-size: 1rem;
+            margin: -14px 0 28px;
+        }
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+        }
+        .video-card {
+            background: rgba(22, 28, 36, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            animation: fadeInUp 0.5s ease backwards;
+        }
+        .video-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(0, 229, 255, 0.3);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 0 20px rgba(0, 229, 255, 0.1);
+        }
+        .video-card video {
+            display: block;
+            width: 100%;
+            aspect-ratio: 9 / 16;
+            object-fit: cover;
+            background: #000;
+        }
+        .video-name {
+            padding: 14px 16px;
+            font-weight: 600;
+            color: #e7ecf3;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
         /* ===== Cards ===== */
         .app-card {
             background: rgba(22, 28, 36, 0.6);
@@ -702,6 +743,13 @@
             </div>
         </header>
 
+        <!-- Видеоролики -->
+        <section class="section" id="videos">
+            <div class="section-title">🎬 Наши приложения в деле <span class="line"></span></div>
+            <p class="videos-subtitle">Короткие рекламные ролики</p>
+            <div class="videos-grid" id="videos-grid"></div>
+        </section>
+
         <!-- Приложения -->
         <section class="section" id="apps">
             <div class="section-title">📱 Приложения <span class="line"></span></div>
@@ -834,6 +882,25 @@
 
         renderGrid(APPS_ONLY, 'apps-grid');
         renderGrid(GAMES, 'games-grid');
+
+        /* ---------- Видеоролики ---------- */
+        function renderVideos() {
+            const container = document.getElementById('videos-grid');
+            if (!container) return;
+            const items = APPS.filter(function (a) { return a.video; });
+            container.innerHTML = items.map(function (a, i) {
+                return '<div class="video-card" style="animation-delay:' + (i * 0.08) + 's">' +
+                    '<video src="' + a.video + '" muted loop playsinline preload="metadata"></video>' +
+                    '<div class="video-name">▶ ' + a.name + '</div>' +
+                    '</div>';
+            }).join('');
+            container.querySelectorAll('video').forEach(function (v) {
+                v.addEventListener('mouseenter', function () { v.play(); });
+                v.addEventListener('mouseleave', function () { v.pause(); });
+                v.addEventListener('touchstart', function () { if (v.paused) v.play(); else v.pause(); });
+            });
+        }
+        renderVideos();
 
         /* ---------- Модалка ---------- */
         const overlay = document.getElementById('modal-overlay');

@@ -59,6 +59,7 @@ const APPS = [
             "assets/screenshots/galochka/05-Галочка-Про.png",
             "assets/screenshots/galochka/06-Корзина.png"
         ],
+        video: "assets/videos/galochka-promo.mp4",
         apk: "assets/apk/galochka/Галочка-4.1.0-release.apk",
         apkSize: "11 МБ",
         ruStore: "https://www.rustore.ru/catalog/app/com.kdenstudiomeasurement.checkmark",
@@ -129,6 +130,7 @@ const APPS = [
             "assets/screenshots/schemoteka/06-Сохранения.png",
             "assets/screenshots/schemoteka/07-Настройки.png"
         ],
+        video: "assets/videos/schemoteka-promo.mp4",
         apk: "assets/apk/schemoteka/Схемотека-0.4.0-release.apk",
         apkSize: "5 МБ",
         ruStore: "https://www.rustore.ru/catalog/app/com.kdenstudiomeasurement.schemoteka",
@@ -159,6 +161,7 @@ const APPS = [
             "assets/screenshots/morze/03-Топ.png",
             "assets/screenshots/morze/04-Промо.png"
         ],
+        video: "assets/videos/morze-promo.mp4",
         apk: "assets/apk/morze/Морзе-0.6.0-release.apk",
         apkSize: "11 МБ",
         ruStore: "",
@@ -189,6 +192,7 @@ const APPS = [
             "assets/screenshots/html-editor/04-Файловая-система.png",
             "assets/screenshots/html-editor/05-Главный-экран.png"
         ],
+        video: "assets/videos/html-editor-promo.mp4",
         apk: "assets/apk/html-editor/HTML-Editor-Run-Craft-0.5.0-release.apk",
         apkSize: "19 МБ",
         ruStore: "https://www.rustore.ru/catalog/app/com.kdenstudiomeasurement.htmleditorruncraft",
@@ -216,6 +220,7 @@ const APPS = [
             "assets/screenshots/unity-cs/promo-2.png",
             "assets/screenshots/unity-cs/promo-3.png"
         ],
+        video: "assets/videos/unity-cs-promo.mp4",
         apk: "assets/apk/unity-cs/UnityCSharp-0.5.0-release.apk",
         apkSize: "5 МБ",
         ruStore: "",
